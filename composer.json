@@ -1,0 +1,14 @@
+{
+	"name": "asolution-company/asc-boiler-plate",
+	"description": "WordPress plugin boilerplate with Core, Admin, and Public structure.",
+	"type": "wordpress-plugin",
+	"license": "GPL-3.0-or-later",
+	"require": {
+		"php": ">=8.1"
+	},
+	"autoload": {
+		"psr-4": {
+			"ASC\\BoilerPlate\\": "includes/"
+		}
+	}
+}
