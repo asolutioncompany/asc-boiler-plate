@@ -2,7 +2,7 @@
 /**
  * Core Class
  *
- * Main plugin class: activation, Admin and Front instances.
+ * Main plugin class that handles initialization and lifecycle hooks.
  *
  * @package asc-boiler-plate
  * @since 1.0.0
@@ -12,6 +12,7 @@ declare( strict_types = 1 );
 
 namespace ASC\BoilerPlate\Core;
 
+use ASC\BoilerPlate\Admin\Admin;
 use ASC\BoilerPlate\Front\Front;
 
 /**
@@ -32,18 +33,6 @@ class Core {
 	 * @var Core|null
 	 */
 	private static ?Core $instance = null;
-
-	/**
-	 * Get plugin instance.
-	 *
-	 * @return Core
-	 */
-	public static function get_instance(): Core {
-		if ( null === self::$instance ) {
-			self::$instance = new self();
-		}
-		return self::$instance;
-	}
 
 	/**
 	 * Constructor.
@@ -75,6 +64,36 @@ class Core {
 	}
 
 	/**
+	 * Get plugin instance.
+	 *
+	 * @return Core
+	 */
+	public static function get_instance(): Core {
+		if ( null === self::$instance ) {
+			self::$instance = new self();
+		}
+		return self::$instance;
+	}
+
+	/**
+	 * Get the plugin URL.
+	 *
+	 * @return string
+	 */
+	public function get_plugin_url(): string {
+		return plugin_dir_url( \ASC_BOILER_PLATE_PLUGIN_FILE );
+	}
+
+	/**
+	 * Get the plugin path.
+	 *
+	 * @return string
+	 */
+	public function get_plugin_path(): string {
+		return plugin_dir_path( \ASC_BOILER_PLATE_PLUGIN_FILE );
+	}
+
+	/**
 	 * Load plugin text domain.
 	 *
 	 * @return void
@@ -93,6 +112,8 @@ class Core {
 	 * @return void
 	 */
 	public static function activate(): void {
+		flush_rewrite_rules();
+
 		add_option( 'asc_boiler_plate_version', self::VERSION );
 	}
 
@@ -102,6 +123,7 @@ class Core {
 	 * @return void
 	 */
 	public static function deactivate(): void {
+		flush_rewrite_rules();
 	}
 
 	/**

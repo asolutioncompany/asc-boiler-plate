@@ -1,0 +1,46 @@
+# Copyright (C) 2026 aSolution.company
+# This file is distributed under the GPL v3 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: aS.c Boiler Plate 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/asc-boiler-plate\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-03-07T10:45:33+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: asc-boiler-plate\n"
+
+#. Plugin Name of the plugin
+#: asc-boiler-plate.php
+#: includes/Admin/Admin.php:97
+#: includes/Admin/Admin.php:98
+msgid "aS.c Boiler Plate"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: asc-boiler-plate.php
+msgid "https://github.com/asolutioncompany/asc-boiler-plate"
+msgstr ""
+
+#. Description of the plugin
+#: asc-boiler-plate.php
+msgid "WordPress plugin boilerplate"
+msgstr ""
+
+#. Author of the plugin
+#: asc-boiler-plate.php
+msgid "aSolution.company"
+msgstr ""
+
+#. Author URI of the plugin
+#: asc-boiler-plate.php
+msgid "https://asolution.company"
+msgstr ""
+
+#: includes/Admin/Admin.php:114
+msgid "Add your settings here."
+msgstr ""

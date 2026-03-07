@@ -2,7 +2,7 @@
 /**
  * Front Class
  *
- * Handles front-end asset loading (front CSS and JavaScript).
+ * Handles front-end initialization and enqueues front assets.
  *
  * @package asc-boiler-plate
  * @since 1.0.0
@@ -11,6 +11,8 @@
 declare( strict_types = 1 );
 
 namespace ASC\BoilerPlate\Front;
+
+use ASC\BoilerPlate\Core\Core;
 
 /**
  * Front Class
@@ -23,25 +25,16 @@ class Front {
 	 * @return void
 	 */
 	public function __construct() {
+		$this->init();
+	}
+
+	/**
+	 * Initialize front components.
+	 *
+	 * @return void
+	 */
+	private function init(): void {
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_front_assets' ) );
-	}
-
-	/**
-	 * Get the plugin URL.
-	 *
-	 * @return string
-	 */
-	private function get_plugin_url(): string {
-		return plugin_dir_url( \ASC_BOILER_PLATE_PLUGIN_FILE );
-	}
-
-	/**
-	 * Get the plugin path.
-	 *
-	 * @return string
-	 */
-	private function get_plugin_path(): string {
-		return plugin_dir_path( \ASC_BOILER_PLATE_PLUGIN_FILE );
 	}
 
 	/**
@@ -50,8 +43,10 @@ class Front {
 	 * @return void
 	 */
 	public function enqueue_front_assets(): void {
-		$plugin_url = $this->get_plugin_url();
-		$plugin_path = $this->get_plugin_path();
+		$core = Core::get_instance();
+		$plugin_url = $core->get_plugin_url();
+		$plugin_path = $core->get_plugin_path();
+
 		$css_file = 'assets/front/front.css';
 		$js_file = 'assets/front/front.js';
 

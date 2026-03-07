@@ -13,6 +13,7 @@ declare( strict_types = 1 );
  * Description: WordPress plugin boilerplate
  * Version: 1.0.0
  * Requires at least: 5.0
+ * Tested up to: 6.9
  * Requires PHP: 8.1
  * Author: aSolution.company
  * Author URI: https://asolution.company
