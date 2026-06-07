@@ -43,6 +43,10 @@ class Admin {
 	private function init(): void {
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_assets' ) );
 		add_action( 'admin_menu', array( $this, 'register_settings_page' ) );
+		add_filter(
+			'plugin_action_links_' . plugin_basename( \ASC_BOILER_PLATE_PLUGIN_FILE ),
+			array( $this, 'add_settings_link' )
+		);
 	}
 
 	/**
@@ -85,6 +89,20 @@ class Admin {
 				'ajax_nonce' => wp_create_nonce( 'asc-boiler-plate-admin-ajax-nonce' ),
 			)
 		);
+	}
+
+	/**
+	 * Add a Settings link on the Plugins page.
+	 *
+	 * @param array<int, string> $links Existing plugin action links.
+	 * @return array<int, string>
+	 */
+	public function add_settings_link( array $links ): array {
+		$settings_url = admin_url( 'options-general.php?page=' . self::PAGE_SLUG );
+		$settings_link = '<a href="' . esc_url( $settings_url ) . '">' . esc_html__( 'Settings', 'asc-boiler-plate' ) . '</a>';
+		array_unshift( $links, $settings_link );
+
+		return $links;
 	}
 
 	/**
